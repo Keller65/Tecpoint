@@ -46,8 +46,9 @@ export function DropdownMenuDemo() {
           <Image
             className="h-[30px] w-[30px] rounded-full aspect-square object-cover"
             alt="User profile photo"
-            src={currentUser ? currentUser?.photoURL : url}
-            width={30} height={30}
+            src={currentUser?.photoURL || url}
+            width={30}
+            height={30}
             loading="lazy"
           />
           <ChevronDown color="#787878" />
