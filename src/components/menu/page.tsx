@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 
 function NavbarMenu() {
@@ -8,10 +10,11 @@ function NavbarMenu() {
       <p>Welcome to Tecpoint website</p>
 
       <Image
-        className="h-10 w-10 rounded-full aspect-square object-cover"
+        className="h-[80px] w-[80px] rounded-full aspect-square object-cover"
         alt="User profile photo"
         src={url}
         width={80} height={80}
+        loading="lazy"
       />
     </nav>
   )
