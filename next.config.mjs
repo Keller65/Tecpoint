@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['wikirock.net'],
+    domains: ['wikirock.net', "lh3.googleusercontent.com"],
   },
 };
 

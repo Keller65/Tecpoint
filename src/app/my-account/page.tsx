@@ -9,26 +9,42 @@ function My_Acoount() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setEmailError(false);
+    setPasswordError(false);
+    setError(null);
+
     try {
       await signInWithEmailAndPassword(email, password);
-      // Redirigir o hacer algo después del inicio de sesión exitoso
-    } catch (error) {
-      setError(error instanceof Error ? error.message : 'Error desconocido');
+    } catch (error: any) {
+      if (error.code === 'auth/user-not-found') {
+        setEmailError(true);
+        setError('Usuario no encontrado');
+      } else if (error.code === 'auth/wrong-password') {
+        setPasswordError(true);
+        setError('Contraseña incorrecta');
+      } else if (error.code === 'auth/invalid-email') {
+        setEmailError(true);
+        setError('El formato del correo es incorrecto');
+      } else if (error.code === 'auth/invalid-credential') {
+        setError('Cuenta no válida. Verifique el correo y contraseña.');
+      } else {
+        setError('Ocurrió un error. Intente nuevamente.');
+      }
     }
   };
 
   return (
-    <main className="flex bg-[#eeeeee] w-full h-screen">
+    <main className="flex bg-[#f7f7f7] w-full h-screen">
       <section className="h-full w-[35vw] p-2 flex flex-col items-center justify-center gap-8">
         <div className="2xl:p-8 flex flex-col gap-4 justify-center items-center">
           <h1 className="font-[Poppins] font-[600] 2xl:text-3xl text-center tracking-[-1.1px]">Bienvenido de Nuevo!</h1>
-          <h2 className="text-[15px]">Iniciar sesion con los siguientes proveedores</h2>
+          <h2 className="text-[15px]">Iniciar sesión con los siguientes proveedores</h2>
         </div>
-
-        {error && <div className="text-red-500">{error}</div>}
 
         <div className="flex flex-col gap-y-2 w-full items-center">
           <button
@@ -47,7 +63,7 @@ function My_Acoount() {
 
         <form onSubmit={handleLogin} className="flex flex-col p-4 gap-y-3 items-center justify-center w-full">
           <input
-            className="text-[15px] px-4 py-2 w-[290px] h-12 rounded-[8px] text-black"
+            className={`text-[15px] px-4 py-2 w-[290px] h-12 rounded-[8px] text-black ${emailError ? 'border border-red-500' : ''}`}
             id="email"
             name="email"
             type="email"
@@ -56,7 +72,7 @@ function My_Acoount() {
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            className="text-[15px] px-4 py-2 w-[290px] h-12 rounded-[8px] text-black"
+            className={`text-[15px] px-4 py-2 w-[290px] h-12 rounded-[8px] text-black ${passwordError ? 'border border-red-500' : ''}`}
             id="password"
             name="password"
             type="password"
@@ -64,8 +80,12 @@ function My_Acoount() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="bg-black text-white px-4 py-2 w-[290px] h-12 rounded-[8px]">Iniciar Sesion</button>
+          <button className="bg-black text-white px-4 py-2 w-[290px] h-12 rounded-[8px]">Iniciar Sesión</button>
         </form>
+
+        <span className="h-6">
+          {error && <div className="text-red-500">{error}</div>}
+        </span>
       </section>
 
       <section className="bg-[#FFF7EF] flex flex-1 items-start justify-center">
