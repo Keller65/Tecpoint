@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['wikirock.net', "lh3.googleusercontent.com", "tecpoint.ws"],
+    domains: ['wikirock.net', "lh3.googleusercontent.com", "tecpoint.ws", "https://res.cloudinary.com"],
   },
 };
 
