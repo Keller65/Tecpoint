@@ -42,7 +42,7 @@ function My_Acoount() {
     <main className="flex bg-[#f7f7f7] w-full h-screen">
       <section className="h-full w-[35vw] p-2 flex flex-col items-center justify-center gap-8">
         <div className="2xl:p-8 flex flex-col gap-4 justify-center items-center">
-          <h1 className="font-[Poppins] font-[600] 2xl:text-3xl text-center tracking-[-1.1px]">Bienvenido de Nuevo!</h1>
+          <h1 className="font-[Poppins] font-[600] md:text-3xl 2xl:text-3xl text-center tracking-[-1.1px]">Bienvenido de Nuevo!</h1>
           <h2 className="text-[15px]">Iniciar sesión con los siguientes proveedores</h2>
         </div>
 
@@ -89,7 +89,8 @@ function My_Acoount() {
       </section>
 
       <section className="bg-[#FFF7EF] flex flex-1 items-start justify-center">
-        <img src="/banner.svg" alt="image" className="h-screen w-auto" />
+        <img src="/banner.svg" alt="image" className="h-screen w-[65vw] object-cover" />
+        {/* <img src="/banner_HYPERGEAR.svg" alt="image" className="h-screen w-[65vw] object-cover" /> */}
       </section>
     </main>
   );

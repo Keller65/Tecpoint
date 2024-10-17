@@ -12,19 +12,22 @@ function NavbarMenu() {
   const { currentUser } = useAuth();
 
   return (
-    <nav className="flex flex-col items-center justify-between w-full py-4">
-      <section className="flex items-center justify-between w-full md:px-16 2xl:px-28 py-4">
-        <Image alt="Tecpoint Logo" src="/logo.png" width={180} height={80} />
+    <nav className="flex flex-col items-center justify-between w-full py-4 2xl:max-w-[1536px] m-auto">
+      <section className="flex items-center justify-between w-full md:px-24 2xl:px-0">
+        <div className="flex items-center justify-center gap-8">
+          <Image alt="Tecpoint Logo" src="/logo.png" width={180} height={80} />
 
-        <div className="flex items-center justify-center gap-5">
-          <form className="bg-gray-100 text-black px-3 py-[2px] md:w-[500px] rounded-[8px] flex items-center gap-2">
-            <Search color="rgb(41, 41, 41)" strokeWidth={2.5} />
-            <input placeholder="Buscar Producto" className="bg-gray-100 text-black w-full py-2 outline-none" />
-          </form>
+          <div className="flex items-center justify-center gap-12">
+            <Link href="/" className="text-[14px] font-[500]">Inicio</Link>
+            <Link href="/" className="text-[14px] font-[500]">Categorias</Link>
+            <Link href="/shop" className="text-[14px] font-[500]">Lo mas Nuevo!</Link>
+            <NavigationMenuDemo />
+          </div>
         </div>
 
         <div className="flex items-center justify-center gap-x-8">
-          <span className="flex items-center justify-center gap-x-3">
+          <span className="flex items-center justify-center gap-x-6">
+            <Search color="#000" strokeWidth={1.8} />
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
             </svg>
@@ -37,13 +40,6 @@ function NavbarMenu() {
           <DropdownMenuDemo />
         </div>
       </section>
-
-      <div className="flex items-center justify-center gap-12">
-        <Link href="/" className="text-[14px] font-[500]">Inicio</Link>
-        <Link href="/" className="text-[14px] font-[500]">Categorias</Link>
-        <Link href="/shop" className="text-[14px] font-[500]">Lo mas Nuevo!</Link>
-        <NavigationMenuDemo />
-      </div>
     </nav>
   )
 }

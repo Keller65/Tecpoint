@@ -54,7 +54,7 @@ export function DropdownMenuDemo() {
           <ChevronDown color="#787878" />
         </span>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 mr-12">
+      <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>Mi Cuenta</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
