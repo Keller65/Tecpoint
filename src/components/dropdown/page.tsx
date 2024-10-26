@@ -44,7 +44,7 @@ export function DropdownMenuDemo() {
       <DropdownMenuTrigger asChild>
         <span className="cursor-pointer border-[1.5px] border-gray-300 p-1 rounded-full flex items-center justify-center gap-1">
           <Image
-            className="h-[30px] w-[30px] rounded-full aspect-square object-cover"
+            className="rounded-full aspect-square object-cover"
             alt="User profile photo"
             src={currentUser?.photoURL || url}
             width={30}

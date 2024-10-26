@@ -1,25 +1,19 @@
+import type { Metadata } from "next";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Distribuidores de Accesorios Tecnológicos | Tecpoint",
   description: "Distribuidor de accesorios tecnológicos en Honduras. Cargadores, adaptadores, audífonos, periféricos y más, al por mayor y al detalle.",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="es">
-      <head>
-        {/* Favicon global */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/favicon.ico" />
-        {/* <link rel="manifest" href="/site.webmanifest" /> */}
-      </head>
       <body>
         <AuthProvider>
           {children}

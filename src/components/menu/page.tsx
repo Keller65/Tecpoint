@@ -7,6 +7,19 @@ import { Heart, Search } from "lucide-react";
 import { NavigationMenuDemo } from "../NavigationMenu/page";
 import Link from "next/link";
 
+import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
 function NavbarMenu() {
   const url = "https://wikirock.net/wp-content/uploads/2023/06/Lana-Del-Rey.jpg";
   const { currentUser } = useAuth();
@@ -15,7 +28,7 @@ function NavbarMenu() {
     <nav className="flex flex-col items-center justify-between w-full py-4 2xl:max-w-[1536px] m-auto">
       <section className="flex items-center justify-between w-full md:px-24 2xl:px-0">
         <div className="flex items-center justify-center gap-8">
-          <Image alt="Tecpoint Logo" src="/logo.png" width={180} height={80} />
+          <Image alt="Tecpoint Logo" src="/logo.png" width={180} height={80} className="aspect-[180-80]" />
 
           <div className="flex items-center justify-center gap-12">
             <Link href="/" className="text-[14px] font-[500]">Inicio</Link>
@@ -27,7 +40,36 @@ function NavbarMenu() {
 
         <div className="flex items-center justify-center gap-x-8">
           <span className="flex items-center justify-center gap-x-6">
-            <Search color="#000" strokeWidth={1.8} />
+
+            <Dialog>
+              <DialogTrigger asChild className="cursor-pointer">
+                <Search color="#000" strokeWidth={1.8} />
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px] md:max-w-[850px] h-auto">
+                <DialogHeader>
+                  <DialogTitle className="sm:text-[18px] md:text-[24px]">Empieza a Buscar Productos!</DialogTitle>
+                </DialogHeader>
+                <DialogDescription>
+                  Make changes to your profile here. Click save when you're done.
+                </DialogDescription>
+                <div className="flex items-center justify-center gap-x-2">
+                  <Input
+                    id="name"
+                    defaultValue=""
+                    className="flex-1 py-2 px-6 md:h-12 rounded-full"
+                    placeholder="Buscar Productos"
+                  />
+                  <button type="submit" name="submit" id="submit" className="bg-black p-2 rounded-full border size-12 grid place-content-center active:bg-[#f30] transition-colors">
+                    <Search color="#fff" strokeWidth={1.8} />
+                  </button>
+                </div>
+
+                <DialogFooter className="h-[250px] w-full bg-gray-200">
+
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
             </svg>

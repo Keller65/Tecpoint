@@ -45,7 +45,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         const querySnapshot = await getDocs(collection(db, process.env.NEXT_PUBLIC_DATABASE_NAME as string));
         const productsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })) as Product[];
         setProducts(productsData);
-        console.log(productsData)
+        // console.log(productsData)
       } catch (error) {
         setProducts([]);
         console.error('Error al obtener la data', error);
