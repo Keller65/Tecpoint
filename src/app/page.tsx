@@ -6,7 +6,7 @@ export default async function Home() {
   const products: Product[] = await getWooCommerceProducts();
 
   return (
-    <main className="2xl:max-w-[1536px] m-auto mb-24">
+    <main className="2xl:max-w-[1536px] m-auto mb-24 md:w-[1300px]">
       <NavbarMenu />
 
       <section className="w-full h-[70vh] 2xl:h-[65vh] bg-[#FFF7EF] flex flex-wrap items-center justify-center">
@@ -37,7 +37,7 @@ export default async function Home() {
       </div>
 
       <article className="mt-10 flex flex-col gap-12 m-auto md:p-6">
-        <h1 className="font-semibold text-4xl text-center tracking-[-2px]">Lo más Nuevo en Tecpoint</h1>
+        <h1 className="font-semibold 2xl:text-4xl text-center tracking-[-2px]">Lo más Nuevo en Tecpoint</h1>
 
         <div className="flex justify-center flex-wrap gap-6">
           {products.map((product) => (
@@ -46,20 +46,20 @@ export default async function Home() {
                 <p className="text-[12px] font-semibold text-white">Nuevo</p>
               </span>
 
-              <div className="flex flex-col h-[490px] w-[360px] gap-[4px]">
-                <div className="bg-[#fff] h-[340px] rounded-t-[20px] grid place-content-center border">
+              <div className="flex flex-col md:w-[320px] md:h-[350px] 2xl:h-[440px] 2xl:w-[360px] gap-[4px]">
+                <div className="bg-[#fff] rounded-t-[20px] grid place-content-center border">
                   <img
                     src={product.images[0]?.src || ''}
                     alt={product.name}
                     width={300}
                     height={300}
-                    className="md:size-[280px] 2xl:size-[330px] 2xl:aspect-[330/300] object-contain"
+                    className="2xl:size-[290px] 2xl:aspect-square md:size-[280px] object-contain"
                     loading="lazy"
                   />
                 </div>
 
-                <div className="flex-1 bg-[#f4f4f4] rounded-b-[20px] grid place-content-center px-3 gap-y-3">
-                  <h2 className="text-xl text-center tracking-[-1.5px] leading-[22px] font-[540]">
+                <div className="flex-1 bg-[#f4f4f4] rounded-b-[20px] grid place-content-center px-6 gap-y-3">
+                  <h2 className="md:text-lg text-center tracking-[-1.5px] leading-3 md:leading-[20px] font-[540]">
                     {product.name}
                   </h2>
                   <p className="text-center text-[#ff4e1d] font-bold">

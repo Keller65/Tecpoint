@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: 'Poppins';
+  font-family: 'Poppins-medium';
 }
 
 @layer utilities {
@@ -16,6 +16,13 @@
     font-style: normal;
     font-display: swap;
     src: url('../app/fonts/Poppins-SemiBold.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Poppins-medium';
+    font-style: normal;
+    font-display: swap;
+    src: url('../app/fonts/Poppins-Regular.ttf') format('truetype');
   }
 }
 

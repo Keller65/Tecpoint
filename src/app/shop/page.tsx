@@ -18,7 +18,7 @@ export const metadata = {
 export default async function Shop({ searchParams }: { searchParams: { page?: string } }) {
   const products: Product[] = await getAllProducts();
 
-  const productsPerPage = 50;
+  const productsPerPage = 28;
   const currentPage = parseInt(searchParams.page || "1", 10);
   const startIndex = (currentPage - 1) * productsPerPage;
   const paginatedProducts = products.slice(startIndex, startIndex + productsPerPage);
@@ -42,11 +42,12 @@ export default async function Shop({ searchParams }: { searchParams: { page?: st
   }
 
   return (
-    <main className="2xl:max-w-[1536px] m-auto mb-24">
+    <main className="2xl:max-w-[1536px] m-auto mb-24 md:w-[1300px]">
       <NavbarMenu />
-      <h1 className="text-center text-2xl font-bold">Bienvenido a la tienda</h1>
 
-      <Pagination>
+      <h1 className="text-center text-2xl font-bold mt-8">Bienvenido a la tienda Tecpoint</h1>
+
+      <Pagination className="mt-10">
         <PaginationContent>
           {currentPage > 1 ? (
             <PaginationItem>
@@ -83,20 +84,24 @@ export default async function Shop({ searchParams }: { searchParams: { page?: st
         </PaginationContent>
       </Pagination>
 
-      <div className="product-list flex flex-wrap justify-center gap-6 mt-4">
+      <div className="flex flex-wrap justify-center gap-6 mt-4">
         {paginatedProducts.map(product => (
-          <div key={product.id} className="flex flex-col cursor-pointer relative border p-4 w-[300px]">
-            <Link href={`/shop/${product.slug}`}>
+          <div key={product.id} className="flex flex-col cursor-pointer relative border p-3 h-fit w-[300px]">
+            <Link href={`/shop/${product.slug}`} className="flex flex-col gap-4">
               <img
                 src={product.images[0]?.src}
                 alt={product.name}
-                className="w-[200px] h-[200px] aspect-[200/200] object-contain"
+                className="w-[200px] h-[200px] aspect-[200/200] object-contain m-auto"
                 loading="lazy"
                 height={200}
                 width={200}
               />
-              <h2 className="text-xl font-semibold mt-2">{product.name}</h2>
-              <p className="text-[#ff4e1d] font-bold">{product.price} {product.currency}</p>
+              <div className="flex flex-1 flex-col items-center justify-between gap-y-6">
+                <h2 className="text-md font-semibold mt-2 text-center leading-4">{product.name}</h2>
+                {/* <p className="text-[#ff4e1d] font-bold">{product.price} {product.currency}</p> */}
+
+                <Link href={`/shop/${product.slug}`} className="w-full grid place-content-center bg-black text-white px-6 py-3">ver producto</Link>
+              </div>
             </Link>
           </div>
         ))}

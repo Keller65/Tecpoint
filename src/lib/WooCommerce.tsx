@@ -6,6 +6,7 @@ export interface Product {
   images: { src: string }[];
   slug?: string;
   description?: string
+  sku?: string
 }
 
 export const getWooCommerceProducts = async () => {
@@ -15,15 +16,15 @@ export const getWooCommerceProducts = async () => {
         'Authorization': 'Basic ' + Buffer.from(`ck_2406bdb0efd3117366b3a54861feb7aad8bd126f:cs_0a7a1205e3dcc73631f8249a4cef6b1bc1adf710`).toString('base64')
       }
     });
-    
+
     if (!response.ok) {
       throw new Error(`Error woocommerce: ${response.statusText}`);
     }
-    
+
     const products = await response.json();
     console.log(products);
     return products;
-    
+
   } catch (error) {
     console.error('Error al realizar el fetch de los productos:', error);
     return [];
