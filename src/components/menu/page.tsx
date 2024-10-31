@@ -3,11 +3,10 @@
 import { useAuth } from "@/context/useAuth";
 import Image from "next/image";
 import { DropdownMenuDemo } from "../dropdown/page";
-import { Heart, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { NavigationMenuDemo } from "../NavigationMenu/page";
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -18,7 +17,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 
 function NavbarMenu() {
   const url = "https://wikirock.net/wp-content/uploads/2023/06/Lana-Del-Rey.jpg";

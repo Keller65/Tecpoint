@@ -1,6 +1,9 @@
 import NavbarMenu from "@/components/menu/page";
 import LogosImages from "./logos/logos.json";
 import { getWooCommerceProducts, Product } from "@/lib/WooCommerce";
+import Image from "next/image";
+
+export const revalidate = 3600;
 
 export default async function Home() {
   const products: Product[] = await getWooCommerceProducts();
@@ -10,7 +13,7 @@ export default async function Home() {
       <NavbarMenu />
 
       <section className="w-full h-[70vh] 2xl:h-[65vh] bg-[#FFF7EF] flex flex-wrap items-center justify-center">
-        <img alt="banner" src="/banner.svg" className="h-full w-auto" />
+        <Image alt="banner" src="/banner.svg" className="h-full w-auto" width={1300} height={500} />
       </section>
 
       <div className="relative overflow-hidden w-full md:w-full py-4 m-auto">
@@ -22,10 +25,11 @@ export default async function Home() {
                 key={index}
                 className="bg-[#fafafa] hover:bg-[#f3f3f3] w-[260px] h-[70px] 2xl:h-[80px] rounded-[8px] grid place-content-center grayscale hover:grayscale-0 cursor-pointer transition-all mx-4"
               >
-                <img
+                <Image
                   height={30}
-                  width="auto"
-                  src={logo.logo}
+                  width={180}
+                  quality={87}
+                  src={logo.logo || ""}
                   alt={`Logo ${index}`}
                   className="w-auto h-[30px] select-none"
                 />
@@ -48,9 +52,9 @@ export default async function Home() {
 
               <div className="flex flex-col md:w-[320px] md:h-[350px] 2xl:h-[440px] 2xl:w-[360px] gap-[4px]">
                 <div className="bg-[#fff] rounded-t-[20px] grid place-content-center border">
-                  <img
+                  <Image
                     src={product.images[0]?.src || ''}
-                    alt={product.name}
+                    alt={product.name || "producto no disponible - tecpoint.ws"}
                     width={300}
                     height={300}
                     className="2xl:size-[290px] 2xl:aspect-square md:size-[280px] object-contain"

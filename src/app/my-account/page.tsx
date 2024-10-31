@@ -89,8 +89,7 @@ function My_Acoount() {
       </section>
 
       <section className="bg-[#FFF7EF] flex flex-1 items-start justify-center">
-        <img src="/banner.svg" alt="image" className="h-screen w-[65vw] object-cover" />
-        {/* <img src="/banner_HYPERGEAR.svg" alt="image" className="h-screen w-[65vw] object-cover" /> */}
+        <Image width={500} height={300} src="/banner.svg" alt="image" className="h-screen w-[65vw] object-cover" priority />
       </section>
     </main>
   );
