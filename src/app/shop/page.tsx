@@ -1,5 +1,6 @@
 import NavbarMenu from "@/components/menu/page";
 import { getAllProducts, Product } from "@/lib/WooCommerce";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Pagination,
@@ -32,7 +33,7 @@ export default async function Shop({ searchParams }: { searchParams: { page?: st
   } else {
     const halfVisible = Math.floor(maxVisiblePages / 2);
     let startPage = Math.max(1, currentPage - halfVisible);
-    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+    const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
 
     if (endPage - startPage < maxVisiblePages - 1) {
       startPage = Math.max(1, endPage - maxVisiblePages + 1);
@@ -88,9 +89,9 @@ export default async function Shop({ searchParams }: { searchParams: { page?: st
         {paginatedProducts.map(product => (
           <div key={product.id} className="flex flex-col cursor-pointer relative border p-3 h-fit w-[300px]">
             <Link href={`/shop/${product.slug}`} className="flex flex-col gap-4">
-              <img
+              <Image
                 src={product.images[0]?.src}
-                alt={product.name}
+                alt={product.name || ""}
                 className="w-[200px] h-[200px] aspect-[200/200] object-contain m-auto"
                 loading="lazy"
                 height={200}

@@ -1,6 +1,5 @@
 "use client"
 
-import { useAuth } from "@/context/useAuth";
 import Image from "next/image";
 import { DropdownMenuDemo } from "../dropdown/page";
 import { Search } from "lucide-react";
@@ -19,14 +18,11 @@ import {
 import { Input } from "@/components/ui/input"
 
 function NavbarMenu() {
-  const url = "https://wikirock.net/wp-content/uploads/2023/06/Lana-Del-Rey.jpg";
-  const { currentUser } = useAuth();
-
   return (
     <nav className="flex flex-col items-center justify-between w-full py-4 2xl:max-w-[1536px] m-auto z-10">
       <section className="flex items-center justify-between w-full md:px-24 2xl:px-0">
         <div className="flex items-center justify-center gap-8">
-          <Image alt="Tecpoint Logo" src="/logo.png" width={180} height={80} className="aspect-[180-80]" />
+          <Image priority alt="Tecpoint Logo" src="/logo.png" width={180} height={80} className="aspect-[180-80]" />
 
           <div className="flex items-center justify-center gap-12">
             <Link href="/" className="text-[14px] font-[500] font-[Poppins-medium]">Inicio</Link>

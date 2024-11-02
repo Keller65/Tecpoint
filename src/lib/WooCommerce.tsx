@@ -5,8 +5,13 @@ export interface Product {
   currency?: string;
   images: { src: string }[];
   slug?: string;
-  description?: string
-  sku?: string
+  description?: string;
+  short_description?: string;
+  sku?: string;
+  regular_price?: string;
+  permalink?: string;
+  stock_status?: string;
+  brands?: { id: number; name: string; slug: string }[] | undefined;
 }
 
 export const getWooCommerceProducts = async () => {
@@ -22,7 +27,6 @@ export const getWooCommerceProducts = async () => {
     }
 
     const products = await response.json();
-    console.log(products);
     return products;
 
   } catch (error) {
