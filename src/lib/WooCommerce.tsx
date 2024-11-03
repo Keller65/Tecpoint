@@ -38,7 +38,7 @@ export const getWooCommerceProducts = async () => {
 export const getAllProducts = async (): Promise<Product[]> => {
   let products: Product[] = [];
   let page = 1;
-  const perPage = 100; // Número de productos por página
+  const perPage = 100;
 
   try {
     while (true) {
@@ -55,12 +55,11 @@ export const getAllProducts = async (): Promise<Product[]> => {
       const pageProducts: Product[] = await response.json();
       products = [...products, ...pageProducts];
 
-      // Si no hay más productos en la página, terminamos el ciclo
       if (pageProducts.length < perPage) break;
       page++;
     }
 
-    return products; // Retornamos todos los productos
+    return products;
   } catch (error) {
     console.error('Error al realizar el fetch de los productos:', error);
     return [];
