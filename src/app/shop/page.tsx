@@ -11,10 +11,20 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
 export const metadata = {
   title: "Tienda | Todo en accesorios Tecnológicos",
   description: "Descubre nuestra tienda online con lo último en accesorios tecnológicos de la mejor calidad.",
 };
+
+export const revalidate = 60;
 
 export default async function Shop({ searchParams }: { searchParams: { page?: string } }) {
   const products: Product[] = await getAllProducts();
@@ -47,6 +57,21 @@ export default async function Shop({ searchParams }: { searchParams: { page?: st
       <NavbarMenu />
 
       <h1 className="text-center text-2xl font-bold mt-8">Bienvenido a la tienda Tecpoint</h1>
+
+      <Select>
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="Categoria" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="Audio">Audio</SelectItem>
+          <SelectItem value="Adaptador">Adaptadores</SelectItem>
+          <SelectItem value="Cargador">Cargadores</SelectItem>
+          <SelectItem value="Cable">Cables</SelectItem>
+          <SelectItem value="Cobertor">Cobertores</SelectItem>
+          <SelectItem value="Memoria">Memorias</SelectItem>
+          <SelectItem value="Power Bank">Power Banks</SelectItem>
+        </SelectContent>
+      </Select>
 
       <Pagination className="mt-10">
         <PaginationContent>
@@ -99,8 +124,6 @@ export default async function Shop({ searchParams }: { searchParams: { page?: st
               />
               <div className="flex flex-1 flex-col items-center justify-between gap-y-6">
                 <h2 className="text-md font-semibold mt-2 text-center leading-4">{product.name}</h2>
-                {/* <p className="text-[#ff4e1d] font-bold">{product.price} {product.currency}</p> */}
-
                 <Link href={`/shop/${product.slug}`} className="w-full grid place-content-center bg-black text-white px-6 py-3">ver producto</Link>
               </div>
             </Link>

@@ -1,17 +1,26 @@
 export interface Product {
   id: number;
   name?: string;
-  price?: string;
-  currency?: string;
-  images: { src: string }[];
   slug?: string;
+  permalink?: string;
   description?: string;
   short_description?: string;
   sku?: string;
+  price?: string;
+  currency?: string;
   regular_price?: string;
-  permalink?: string;
+  sale_price?: string;
+  on_sale?: boolean;
+  purchasable?: boolean;
+  stock_quantity?: number;
   stock_status?: string;
-  brands?: { id: number; name: string; slug: string }[] | undefined;
+  images: { id: number; src: string; alt?: string }[];
+  categories?: { id: number; name: string; slug: string }[];
+  brands?: { id: number; name: string; slug: string }[];
+  meta_data?: { id: number; key: string; value: any }[];
+  wholesale_price?: string;
+  brand_image?: string;
+  category?: string
 }
 
 export const getWooCommerceProducts = async () => {

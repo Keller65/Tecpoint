@@ -1,7 +1,28 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['wikirock.net', "lh3.googleusercontent.com", "tecpoint.ws", "https://res.cloudinary.com", "i0.wp.com"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'wikirock.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'tecpoint.ws',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i0.wp.com',
+      },
+    ],
   },
 };
 

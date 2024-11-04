@@ -41,7 +41,7 @@ export default async function Home() {
       </div>
 
       <article className="mt-10 flex flex-col gap-12 m-auto md:p-6">
-        <h1 className="font-semibold 2xl:text-4xl text-center tracking-[-2px]">Lo más Nuevo en Tecpoint</h1>
+        <h1 className="font-semibold text-[32px] 2xl:text-4xl text-center tracking-[-2px]">Lo más Nuevo en Tecpoint</h1>
 
         <div className="flex justify-center flex-wrap gap-6">
           {products.map((product) => (
