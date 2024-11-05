@@ -20,20 +20,25 @@ function My_Acoount() {
 
     try {
       await signInWithEmailAndPassword(email, password);
-    } catch (error: any) {
-      if (error.code === 'auth/user-not-found') {
-        setEmailError(true);
-        setError('Usuario no encontrado');
-      } else if (error.code === 'auth/wrong-password') {
-        setPasswordError(true);
-        setError('Contraseña incorrecta');
-      } else if (error.code === 'auth/invalid-email') {
-        setEmailError(true);
-        setError('El formato del correo es incorrecto');
-      } else if (error.code === 'auth/invalid-credential') {
-        setError('Cuenta no válida. Verifique el correo y contraseña.');
+    } catch (error: unknown) {
+      if (error instanceof Error && "code" in error) {
+        const errorCode = (error as { code: string }).code;
+        if (errorCode === 'auth/user-not-found') {
+          setEmailError(true);
+          setError('Usuario no encontrado');
+        } else if (errorCode === 'auth/wrong-password') {
+          setPasswordError(true);
+          setError('Contraseña incorrecta');
+        } else if (errorCode === 'auth/invalid-email') {
+          setEmailError(true);
+          setError('El formato del correo es incorrecto');
+        } else if (errorCode === 'auth/invalid-credential') {
+          setError('Cuenta no válida. Verifique el correo y contraseña.');
+        } else {
+          setError('Ocurrió un error. Intente nuevamente.');
+        }
       } else {
-        setError('Ocurrió un error. Intente nuevamente.');
+        setError('Ocurrió un error inesperado.');
       }
     }
   };

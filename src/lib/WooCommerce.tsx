@@ -17,7 +17,7 @@ export interface Product {
   images: { id: number; src: string; alt?: string }[];
   categories?: { id: number; name: string; slug: string }[];
   brands?: { id: number; name: string; slug: string }[];
-  meta_data?: { id: number; key: string; value: any }[];
+  meta_data?: { id: number; key: string; value: string }[];
   wholesale_price?: string;
   brand_image?: string;
   category?: string
