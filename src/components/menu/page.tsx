@@ -52,7 +52,7 @@ function NavbarMenu() {
                   <DialogTitle className="sm:text-[18px] md:text-[24px]">Empieza a Buscar Productos!</DialogTitle>
                 </DialogHeader>
                 <DialogDescription>
-                  Make changes to your profile here. Click save when you're done.
+                  Make changes to your profile here. Click save when youre done.
                 </DialogDescription>
                 <div className="flex items-center justify-center gap-x-2">
                   <Input
