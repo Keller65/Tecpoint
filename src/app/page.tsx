@@ -13,7 +13,7 @@ export default async function Home() {
       <NavbarMenu />
 
       <section className="w-full h-[70vh] 2xl:h-[65vh] bg-[#FFF7EF] flex flex-wrap items-center justify-center">
-        <Image alt="banner" src="/banner.svg" className="h-full w-auto" width={1300} height={500} />
+        <Image priority alt="banner" src="/banner.svg" className="h-full w-auto" width={1300} height={500} />
       </section>
 
       <div className="relative overflow-hidden w-full md:w-full py-4 m-auto">
