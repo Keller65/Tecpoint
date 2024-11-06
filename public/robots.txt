@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://tecpoint.vercel.app
+
+# Sitemaps
+Sitemap: https://tecpoint.vercel.app/sitemap.xml
