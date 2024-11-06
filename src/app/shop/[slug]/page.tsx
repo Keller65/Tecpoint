@@ -18,7 +18,7 @@ import {
 
 import Image from "next/image";
 
-export const revalidate = 30;
+export const revalidate = 800;
 
 interface ProductDetailProps {
   params: { slug: string };
