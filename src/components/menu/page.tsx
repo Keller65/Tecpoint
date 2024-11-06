@@ -27,8 +27,8 @@ import {
 
 function NavbarMenu() {
   return (
-    <nav className="flex flex-col items-center justify-between w-full py-4 2xl:max-w-[1536px] m-auto z-10">
-      <section className="flex items-center justify-between w-full md:px-24 2xl:px-0">
+    <header className="flex flex-col items-center justify-between w-full py-4 2xl:max-w-[1536px] m-auto z-10">
+      <header className="flex items-center justify-between w-full md:px-24 2xl:px-0">
         <div className="flex items-center justify-center gap-8">
           <Image priority alt="Tecpoint Logo" src="/logo.png" width={180} height={80} className="aspect-[180-80]" />
 
@@ -95,8 +95,8 @@ function NavbarMenu() {
 
           <DropdownMenuDemo />
         </div>
-      </section>
-    </nav>
+      </header>
+    </header>
   )
 }
 

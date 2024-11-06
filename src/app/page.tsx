@@ -2,6 +2,7 @@ import NavbarMenu from "@/components/menu/page";
 import LogosImages from "./logos/logos.json";
 import { getWooCommerceProducts, Product } from "@/lib/WooCommerce";
 import Image from "next/image";
+import Link from "next/link";
 
 export const revalidate = 3600;
 
@@ -15,6 +16,16 @@ export default async function Home() {
       <section className="w-full h-[70vh] 2xl:h-[65vh] bg-[#FFF7EF] flex flex-wrap items-center justify-center">
         <Image priority alt="banner" src="/banner.svg" className="h-full w-auto" width={1300} height={500} />
       </section>
+
+      {/* Sección de Enlaces Internos para Navegación */}
+      <nav className="flex justify-center gap-6 mt-8">
+        <Link href="/shop">
+          Tienda
+        </Link>
+        <Link href="/my-account">
+          Mi Cuenta
+        </Link>
+      </nav>
 
       <div className="relative overflow-hidden w-full md:w-full py-4 m-auto">
         <div className="bg-gradient-to-r from-white to-transparent h-full w-24 absolute top-0 left-0 z-10" />
@@ -45,7 +56,7 @@ export default async function Home() {
 
         <div className="flex justify-center flex-wrap gap-6">
           {products.map((product) => (
-            <div key={product.id} className="flex flex-col cursor-pointer relative">
+            <Link href={`/shop/${product.slug}`} key={product.id} className="flex flex-col cursor-pointer relative">
               <span className="bg-[#09f] absolute top-4 left-4 rounded-full px-3 py-1">
                 <p className="text-[12px] font-semibold text-white">Nuevo</p>
               </span>
@@ -71,7 +82,7 @@ export default async function Home() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </article>
