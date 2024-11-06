@@ -1,9 +1,9 @@
 module.exports = {
   siteUrl: 'https://tecpoint.vercel.app',
-  generateRobotsTxt: true, // generar robots.txt
-  sitemapSize: 5000,
+  generateRobotsTxt: true,
+  outDir: 'public',
+  sitemapSize: 50000,
   async additionalPaths(config) {
-    // Función para obtener todos los productos de WooCommerce
     const fetchAllProducts = async () => {
       let products = [];
       let page = 1;
@@ -31,7 +31,7 @@ module.exports = {
           const pageProducts = await response.json();
           products = [...products, ...pageProducts];
 
-          if (pageProducts.length < perPage) break; // Salir si ya no hay más productos
+          if (pageProducts.length < perPage) break;
           page++;
         }
       } catch (error) {
@@ -40,10 +40,10 @@ module.exports = {
 
       return products;
     };
-    
+
     const products = await fetchAllProducts();
     return products.map((product) => ({
-      loc: `${config.siteUrl}/shop/${product.slug}`, // URL de cada producto
+      loc: `${config.siteUrl}/shop/${product.slug}`,
       lastmod: new Date().toISOString(),
     }));
   },
