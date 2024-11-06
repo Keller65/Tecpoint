@@ -17,6 +17,7 @@ export default function RootLayout({
         {/* Favicon global */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/favicon.ico" />
+        <meta name="google-site-verification" content="taaJRQIN0ORXLnxBJkkxPKE86jaVdtqX9gTI4cxktFo" />
         {/* <link rel="manifest" href="/site.webmanifest" /> */}
       </head>
       <body>
