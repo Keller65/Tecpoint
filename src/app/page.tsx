@@ -1,20 +1,28 @@
 import NavbarMenu from "@/components/menu/page";
 import LogosImages from "./logos/logos.json";
-import { getWooCommerceProducts, Product } from "@/lib/WooCommerce";
 import Image from "next/image";
+import Link from "next/link";
 
 export const revalidate = 3600;
 
 export default async function Home() {
-  const products: Product[] = await getWooCommerceProducts();
-
+  
   return (
     <main className="2xl:max-w-[1536px] m-auto mb-24 md:w-[1300px]">
       <NavbarMenu />
 
       <section className="w-full h-[70vh] 2xl:h-[65vh] bg-[#FFF7EF] flex flex-wrap items-center justify-center">
-        <Image alt="banner" src="/banner.svg" className="h-full w-auto" width={1300} height={500} />
+        <Image priority alt="banner" src="/banner.svg" className="h-full w-auto" width={1300} height={500} />
       </section>
+
+      <nav className="flex justify-center gap-6 mt-8">
+        <Link href="/shop">
+          Tienda
+        </Link>
+        <Link href="/my-account">
+          Mi Cuenta
+        </Link>
+      </nav>
 
       <div className="relative overflow-hidden w-full md:w-full py-4 m-auto">
         <div className="bg-gradient-to-r from-white to-transparent h-full w-24 absolute top-0 left-0 z-10" />
@@ -43,37 +51,7 @@ export default async function Home() {
       <article className="mt-10 flex flex-col gap-12 m-auto md:p-6">
         <h1 className="font-semibold text-[32px] 2xl:text-4xl text-center tracking-[-2px]">Lo más Nuevo en Tecpoint</h1>
 
-        <div className="flex justify-center flex-wrap gap-6">
-          {products.map((product) => (
-            <div key={product.id} className="flex flex-col cursor-pointer relative">
-              <span className="bg-[#09f] absolute top-4 left-4 rounded-full px-3 py-1">
-                <p className="text-[12px] font-semibold text-white">Nuevo</p>
-              </span>
-
-              <div className="flex flex-col md:w-[320px] md:h-[350px] 2xl:h-[440px] 2xl:w-[360px] gap-[4px]">
-                <div className="bg-[#fff] rounded-t-[20px] grid place-content-center border">
-                  <Image
-                    src={product.images[0]?.src || ''}
-                    alt={product.name || "producto no disponible - tecpoint.ws"}
-                    width={300}
-                    height={300}
-                    className="2xl:size-[290px] 2xl:aspect-square md:size-[280px] object-contain"
-                    loading="lazy"
-                  />
-                </div>
-
-                <div className="flex-1 bg-[#f4f4f4] rounded-b-[20px] grid place-content-center px-6 gap-y-3">
-                  <h2 className="md:text-lg text-center tracking-[-1.5px] leading-3 md:leading-[20px] font-[540]">
-                    {product.name}
-                  </h2>
-                  <p className="text-center text-[#ff4e1d] font-bold">
-                    {product.price ? parseFloat(product.price).toFixed(0) : 'Precio no disponible'}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        
       </article>
     </main>
   );
