@@ -6,9 +6,9 @@ import Link from "next/link";
 export const revalidate = 3600;
 
 export default async function Home() {
-  
+
   return (
-    <main className="2xl:max-w-[1536px] m-auto mb-24 md:w-[1300px]">
+    <main className="m-auto mb-24">
       <NavbarMenu />
 
       <section className="w-full h-[70vh] 2xl:h-[65vh] bg-[#FFF7EF] flex flex-wrap items-center justify-center">
@@ -51,7 +51,7 @@ export default async function Home() {
       <article className="mt-10 flex flex-col gap-12 m-auto md:p-6">
         <h1 className="font-semibold text-[32px] 2xl:text-4xl text-center tracking-[-2px]">Lo más Nuevo en Tecpoint</h1>
 
-        
+
       </article>
     </main>
   );

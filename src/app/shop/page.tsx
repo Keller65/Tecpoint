@@ -1,14 +1,10 @@
+"use client"
+
+import { useContext, useEffect } from "react";
+import { AuthContext } from "@/context/AuthContext";
 import NavbarMenu from "@/components/menu/page";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
 
 import {
   Select,
@@ -16,20 +12,19 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 
-export const metadata = {
-  title: "Tienda | Todo en accesorios Tecnológicos",
-  description: "Descubre nuestra tienda online con lo último en accesorios tecnológicos de la mejor calidad.",
-};
+const Shop = () => {
+  const { products = [], fetchProducts } = useContext(AuthContext)!;
 
-export const revalidate = 60;
-
-export default async function Shop({ searchParams }: { searchParams: { page?: string } }) {
-
+  useEffect(() => {
+    if (products.length === 0) {
+      fetchProducts();
+    }
+  }, [products, fetchProducts]);
 
   return (
-    <main className="2xl:max-w-[1536px] m-auto mb-24 md:w-[1300px]">
+    <main className="m-auto mb-24">
       <NavbarMenu />
 
       <h1 className="text-center text-2xl font-bold mt-8">Bienvenido a la tienda Tecpoint</h1>
@@ -49,6 +44,33 @@ export default async function Shop({ searchParams }: { searchParams: { page?: st
         </SelectContent>
       </Select>
 
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 p-4">
+        {products.length > 0 ? (
+          products.map((product) => (
+            <div key={product.id} className="border p-4 rounded-lg w-[300px]">
+              <Image
+                src={product.imagenes?.imagen_01?.img || '/default-image.jpg'}
+                alt={product.producto}
+                width={250}
+                height={250}
+                className="object-cover"
+                loading="lazy"
+              />
+              <h3 className="mt-4 text-md font-semibold">{product.producto}</h3>
+              <Link
+                href={`/shop/${product.slug}`}
+                className="text-blue-500 hover:underline mt-4 block"
+              >
+                Ver más
+              </Link>
+            </div>
+          ))
+        ) : (
+          <p>Cargando productos...</p>
+        )}
+      </div>
     </main>
   );
-}
+};
+
+export default Shop;
